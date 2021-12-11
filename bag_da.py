@@ -1,53 +1,27 @@
-# Course: CS261 - Data Structures
-# Student Name:
-# Assignment:
-# Description:
-# Last revised:
-
 from dynamic_array import *
-
 
 class Bag:
     def __init__(self, start_bag=None):
-        """
-        Init new bag based on Dynamic Array
-        DO NOT CHANGE THIS METHOD IN ANY WAY
-        """
         self.da = DynamicArray()
 
-        # populate bag with initial values (if provided)
-        # before using this feature, implement add() method
+        # populate bag with initial values
         if start_bag is not None:
             for value in start_bag:
                 self.add(value)
 
     def __str__(self) -> str:
-        """
-        Return content of stack in human-readable form
-        DO NOT CHANGE THIS METHOD IN ANY WAY
-        """
         out = "BAG: " + str(self.da.length()) + " elements. ["
         out += ', '.join([str(self.da.get_at_index(_))
                           for _ in range(self.da.length())])
         return out + ']'
 
     def size(self) -> int:
-        """
-        Return total number of items currently in the bag
-        DO NOT CHANGE THIS CLASS IN ANY WAY
-        """
         return self.da.length()
 
     def add(self, value: object) -> None:
-        """
-        TODO: Write this implementation
-        """
         self.da.append(value)
 
     def remove(self, value: object) -> bool:
-        """
-        TODO: Write this implementation
-        """
         for i in range(self.size()):
             if (self.da.get_at_index(i) == value):
                 self.da.remove_at_index(i)
@@ -55,9 +29,6 @@ class Bag:
         return False
 
     def count(self, value: object) -> int:
-        """
-        TODO: Write this implementation
-        """
         count = 0
         for i in range(self.size()):
             if (self.da.get_at_index(i) == value):
@@ -65,16 +36,10 @@ class Bag:
         return count
 
     def clear(self) -> None:
-        """
-        TODO: Write this implementation
-        """
         for i in range(self.size() - 1, -1, -1):
             self.da.remove_at_index(i)
 
     def equal(self, second_bag: object) -> bool:
-        """
-        TODO: Write this implementation
-        """
         if (self.size() != second_bag.size()):
             return False
         for i in range(self.size()):
@@ -89,9 +54,6 @@ class Bag:
         return True
 
 
-
-
-# BASIC TESTING
 if __name__ == "__main__":
 
     print("\n# add example 1")
