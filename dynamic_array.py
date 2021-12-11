@@ -1,66 +1,34 @@
-# Course: CS261 - Data Structures
-# Student Name:
-# Assignment:
-# Description:
-# Last revised:
-
-
 from static_array import *
 
 
 class DynamicArrayException(Exception):
-    """
-    Custom exception class to be used by Dynamic Array
-    DO NOT CHANGE THIS CLASS IN ANY WAY
-    """
     pass
 
 
 class DynamicArray:
     def __init__(self, start_array=None):
-        """
-        Initialize new dynamic array
-        DO NOT CHANGE THIS METHOD IN ANY WAY
-        """
         self.size = 0
         self.capacity = 4
-        self.first = 0  # do not use / change this value
+        self.first = 0 
         self.data = StaticArray(self.capacity)
 
-        # populate dynamic array with initial values (if provided)
-        # before using this feature, implement append() method
         if start_array is not None:
             for value in start_array:
                 self.append(value)
 
     def __str__(self) -> str:
-        """
-        Return content of dynamic array in human-readable form
-        DO NOT CHANGE THIS METHOD IN ANY WAY
-        """
         out = "DYN_ARR Size/Cap: "
         out += str(self.size) + "/" + str(self.capacity) + ' ['
         out += ', '.join([str(self.data[_]) for _ in range(self.size)])
         return out + ']'
 
     def is_empty(self) -> bool:
-        """
-        Return True is array is empty / False otherwise
-        DO NOT CHANGE THIS METHOD IN ANY WAY
-        """
         return self.size == 0
 
     def length(self) -> int:
-        """
-        Return number of elements stored in array
-        DO NOT CHANGE THIS METHOD IN ANY WAY
-        """
         return self.size
 
     def resize(self, new_capacity: int) -> None:
-        """
-        TODO: Write this implementation
-        """
         if (new_capacity <= 0) or (self.length() > new_capacity):
             return
         array = StaticArray(new_capacity)
@@ -70,18 +38,12 @@ class DynamicArray:
         self.capacity = new_capacity
 
     def append(self, value: object) -> None:
-        """
-        TODO: Write this implementation
-        """
         if self.capacity == self.length():
             self.resize(self.capacity * 2)
         self.data.set(self.length(), value)
         self.size += 1
 
     def insert_at_index(self, index: int, value: object) -> None:
-        """
-        TODO: Write this implementation
-        """
         if (self.length() < index) or (index < 0):
             raise DynamicArrayException(Exception)
         if self.capacity == self.length():
@@ -95,17 +57,11 @@ class DynamicArray:
         self.size += 1
 
     def get_at_index(self, index: int) -> object:
-        """
-        TODO: Write this implementation
-        """
         if (self.length() <= index) or (index < 0):
             raise DynamicArrayException(Exception)
         return self.data.get(index)
 
     def remove_at_index(self, index: int) -> None:
-        """
-        TODO: Write this implementation
-        """
         if (self.length() <= index) or (index < 0):
             raise DynamicArrayException(Exception)
         if self.size < (self.capacity / 4):
@@ -122,9 +78,6 @@ class DynamicArray:
         self.size -= 1
 
     def slice(self, start_index: int, quantity: int) -> object:
-        """
-        TODO: Write this implementation
-        """
         if (start_index < 0) or (quantity < 0) or (self.length() < (start_index + quantity)) or (start_index == self.length()):
             raise DynamicArrayException(Exception)
         array = DynamicArray()
@@ -133,17 +86,11 @@ class DynamicArray:
         return array
 
     def merge(self, second_da: object) -> None:
-        """
-        TODO: Write this implementation
-        """
         for i in range(second_da.length()):
             self.append(second_da.data.get(i))
         
 
     def map(self, map_func) -> object:
-        """
-        TODO: Write this implementation
-        """
         array = DynamicArray()
         for i in range(self.length()):
             array.append(map_func(self.data.get(i)))
@@ -151,9 +98,6 @@ class DynamicArray:
             
 
     def filter(self, filter_func) -> object:
-        """
-        TODO: Write this implementation
-        """
         array = DynamicArray()
         for i in range(self.length()):
             if filter_func(self.data.get(i)) == True:
@@ -162,9 +106,6 @@ class DynamicArray:
             
 
     def reduce(self, reduce_func, initializer=None) -> object:
-        """
-        TODO: Write this implementation
-        """
         if self.is_empty():
             return initializer
         if initializer != None:
@@ -181,8 +122,6 @@ class DynamicArray:
 
 
 
-
-# BASIC TESTING
 if __name__ == "__main__":
     
     print("\n# resize - example 1")
