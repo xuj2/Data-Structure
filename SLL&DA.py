@@ -1,14 +1,5 @@
-# Course: CS261 - Data Structures
-# Assignment: 5
-# Description: 'Helper' data structures
-
-
 class SLNode:
     def __init__(self, key: str, value: object) -> None:
-        """
-        Singly Linked List Node class
-        DO NOT CHANGE THIS CLASS IN ANY WAY
-        """
         self.next = None
         self.key = key
         self.value = value
@@ -19,14 +10,6 @@ class SLNode:
 
 
 class LinkedList:
-    """
-    Class implementing a Singly Linked List
-    Supported methods are: insert, remove, contains, length, iterator
-
-    DO NOT CHANGE THIS CLASS IN ANY WAY
-    YOU ARE ALLOWED TO CREATE AND USE OBJECTS OF THIS CLASS IN YOUR SOLUTION
-    """
-
     def __init__(self) -> None:
         """ Init new SLL """
         self.head = None
@@ -98,15 +81,6 @@ class LinkedList:
 
 
 class DynamicArray:
-    """
-    Class implementing a Dynamic Array
-    Supported methods are:
-    append, pop, swap, get_at_index, set_at_index, length
-
-    DO NOT CHANGE THIS CLASS IN ANY WAY
-    YOU ARE ALLOWED TO CREATE AND USE OBJECTS OF THIS CLASS IN YOUR SOLUTION
-    """
-
     def __init__(self, arr=None):
         """ Initialize new dynamic array """
         self.data = arr.copy() if arr else []
