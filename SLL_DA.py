@@ -67,13 +67,6 @@ class LinkedList:
         return self.size
 
     def __iter__(self) -> SLNode:
-        """
-        Provides iterator capability for the SLL class
-        so it can be used in for ... in ... type of loops.
-        EXAMPLE:
-            for node in my_list:
-                print(node.key, node.value)
-        """
         cur = self.head
         while cur is not None:
             yield cur
